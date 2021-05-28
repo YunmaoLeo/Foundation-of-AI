@@ -52,6 +52,10 @@
   - [Bayes' Theorem](#bayes-theorem)
   - [Random Variables:](#random-variables)
   - [Joint Probability Distribution](#joint-probability-distribution)
+  - [Independence:](#independence)
+  - [Naive Bayes learner：](#naive-bayes-learner)
+  - [Naive Bayes Discrete:](#naive-bayes-discrete)
+  - [Naive Bayes Continuous](#naive-bayes-continuous)
 ## Lecture 1
 
 ### What is an Intelligent agents:
@@ -99,11 +103,11 @@ if Goal-Test[p] on State(node) succeeds:
 frontier = QUEUING-FN(frontier, Expand(node,Action[p]))
 ```
 + 搜索树中的三种类型节点
-  + frontier nodes
+  + `frontier nodes`
     + 被搜索过的但还没有被处理过：没有检索过他们的子节点有没有目标
-  + visited nodes(closed nodes)
+  + `visited nodes(closed nodes)`
     + 被搜索过了，他们的子节点也都被探索过了
-  + Undiscovered nodes:
+  + `Undiscovered nodes`:
     + 还没有过搜索到的节点
 
 + 评估：
@@ -120,7 +124,7 @@ frontier = QUEUING-FN(frontier, Expand(node,Action[p]))
 
 + 评估
   + ``Space complexity``:
-    + 会存储从一个到根节点到子叶的路径和还没有拓展的邻居节点
+    + 会存储从一个从根节点到子叶的路径和还没有拓展的邻居节点
     + O(bm)
   + ``Time complexity``
     + O(b^m)
@@ -200,7 +204,7 @@ frontier = QUEUING-FN(frontier, Expand(node,Action[p]))
 + ``Initial state``: board position, indication of whose move it is
 + ``A set of operators``: define the legal moves that a player can make
 + ``A terminal test``: determines when the game is over (terminal states)测试游戏是否进入结束的状态
-+ ``A utility(payoff) function``: gives a numeric value for the outcom of a game 给出一个数值来表示游戏的结束的结果
++ ``A utility(payoff) function``: gives a numeric value for the outcome of a game 给出一个数值来表示游戏的结束的结果
 
 #### Game Playing - MINIMAX
 + minimax
@@ -404,13 +408,13 @@ While epoch produces an error:
   check next inputs (pattern) from epoch
   Err = T - O
   if Err != 0 then
-    wi = wi + LR * X * Err
+    Wi = Wi + LR * X * Err
   End IF
 End While 
 ```
 ### The learning process: 学习进程
 + Randomly assign initial weights
-+ DO:
++ DO: 
   + present the network with input
   + Calculate the error value inthe output
   + Adjust the weightings of the inputs according to the error.
@@ -433,10 +437,30 @@ End While
 + p(X,Y) = p(Y|X)p(X)
 
 ### Bayes' Theorem
-+ p(Y|X) = p(X|Y)p(Y)/p(X)
++ Product rule
+  + p(Y|X) = p(X|Y)p(Y)/p(X)
 
 ### Random Variables:
-+ A random variable is the basic element of probability, representing an event with some degree of uncertainty as to the event's outcome.
++ A random variable is the ``basic element of probability``, representing an event with some degree of uncertainty as to the event's outcome.
 
 ### Joint Probability Distribution
 + Joint Probability Distribution
+
+### Independence:
++ Variables A and B are independent if any of the following hold:
++ P(A,B) = P(A) P(B)
++ P(A|B) = P(A)
++ P(B|A) = P(B)
+
+### Naive Bayes learner：
++ Discrete: how many times a feature value occurs in items of each class
+  + 计算某一个特征值在某一个类里面出现了几次
++ Continuous: the probability of values for a given class and feature
+  + 某一个类和特征中某个值出现的概率
+
+### Naive Bayes Discrete:
++ P(Feature1 = x|Class = c) = |D(c,f1=x)|/|Dc|
++ D(c,f1=x): number of examples where F1 = x in class c
+
+### Naive Bayes Continuous
++ Assume the dataset follows the normal (Gaussian) distribution
